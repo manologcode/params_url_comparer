@@ -15,15 +15,12 @@
 			<div class="row">
 				<div class="column">
 					<label for="">URL1:</label>
-					<textarea name="url1" id="url1" cols="30" rows="10" required>
-						http://solrproxy.tirant.net:300/frontend4/bcdef/formularioPayload?q=%2Bdivorcio&&start=0&rows=5&fl=id%2Csuperid%2Ctolsystem%2Ctolgeo%2Chasresumen%2Chasasignaciones%2Cscore%2Cmaterias%2Cfuenovedad%2Cfechaalerta%2Ctipodoctrina&bq=titulo%3A%28%22divorcio%22%7E1%29%5E20&bq=titulo%3A%28%22divorcio%22%7E2%29%5E10&bq=textolibreprincipal_es%3A%28%22divorcio%22%7E1%29%5E5&bq=titulo%3A%28%22divorcio%22%7E1%29%5E5&bq=textolibreprincipal_es%3A%28%22divorcio%22%7E1%29&bq=titulo%3A%28%22juicio+de+divorcio%22%7E1%29%5E5&bq=textolibreprincipal_es%3A%28%22juicio+de+divorcio%22%7E1%29&bf=min%28product%28%24%7Bterm0%7D%2C20%29%2C500%29&bf=min%28product%28%24%7Bsem0_0%7D%2C5%29%2C200%29&bf=min%28product%28%24%7Bsem0_0p%7D%2C25%29%2C500%29&bf=min%28product%28%24%7Bsem0_1%7D%2C5%29%2C200%29&bf=min%28product%28%24%7Bsem0_1p%7D%2C25%29%2C500%29&bf=product%28%24%7Bt_divorcio_contencioso%7D%2C3%29&bf=product%287%2Csqrt%28field%28themine_global_me-citan_hits%29%29%29&bf=product%28%24%7Bm_firsttoken_single_1%7D%2C1%29&bf=product%28%24%7Bm_firsttoken_single_2%7D%2C1%29&bf=map%28ms%28NOW%2FMONTH%2Cfechaalerta%29%2C-999999%2C31536000000%2C50%2C0%29&bf=map%28ms%28NOW%2FMONTH%2Cfechaalerta%29%2C31536000001%2C94608000000%2C30%2C0%29&bf=map%28ms%28NOW%2FMONTH%2Cfechaalerta%29%2C94608000001%2C189216000000%2C1%2C0%29&bf=map%28ms%28NOW%2FMONTH%2Cfechaalerta%29%2C189216000001%2C9223372036854775807%2C-50%2C0%29&&sort=score+desc&term0=payload%28themine_global_all-doc-terminos_tes%2C%22divorcio%22%29&sem0_0=payload%28themine_global_all-doc-semanticas_tes%2C%22divorcio%22%29&sem0_0p=payload%28themine_global_premium-doc-semanticas_tes%2C%22divorcio%22%29&sem0_1=payload%28themine_global_all-doc-semanticas_tes%2C%22juicio-de-divorcio%22%29&sem0_1p=payload%28themine_global_premium-doc-semanticas_tes%2C%22juicio-de-divorcio%22%29&t_divorcio_contencioso=payload%28themine_global_all-doc-terminos_tes%2Cdivorcio-contencioso%29&q_firsttoken_single_1=titulofirsttoken%3A%28%22FIRSTTOKEN+divorcio%22%7E1%29&m_firsttoken_single_1=if%28gt%28query%28%24q_firsttoken_single_1%29%2C0%29%2C250%2C0%29&q_firsttoken_single_2=titulofirsttoken%3A%28%22FIRSTTOKEN+divorcio%22%7E2%29&m_firsttoken_single_2=if%28gt%28query%28%24q_firsttoken_single_2%29%2C0%29%2C125%2C0%29&shards=%7B%7D&shards.tolerant=true					</textarea>
+					<textarea name="url1" id="url1" cols="30" rows="10" required></textarea>
 					<div id="html1" class="result"></div>
 				</div>
 				<div class="column">
 					<label for="">URL2:</label>
-					<textarea name="url2" id="url2" cols="30" rows="10" required>
-						http://solrproxy.tirant.net:300/frontend4/bcdef/formularioPayload?q=%2Bdivorcio&start=0&rows=10&qt=/formularioPayload&fl=id,fechaalerta,hasasignaciones,score,materias,fuenovedad&bf=min(product(${term0},20),500)&bf=min(product(${sem0_0},5),200)&bf=min(product(${sem0_0p},25),500)&bf=min(product(${sem0_1},5),200)&bf=min(product(${sem0_1p},25),500)&bf=product(${t_divorcio_contencioso},3)&bf=product(7,sqrt(field(themine_global_me-citan_hits)))&bf=product(${m_firsttoken_single_1},1)&bf=product(${m_firsttoken_single_2},1)&bf=map(ms(NOW/MONTH,fechaalerta),-999999,31536000000,50,0)&bf=map(ms(NOW/MONTH,fechaalerta),31536000001,94608000000,30,0)&bf=map(ms(NOW/MONTH,fechaalerta),94608000001,189216000000,1,0)&bf=map(ms(NOW/MONTH,fechaalerta),189216000001,9223372036854775807,-50,0)&bq=titulo:(%22divorcio%22~1)^20&bq=titulo:(%22divorcio%22~2)^10&bq=textolibreprincipal_es:(%22divorcio%22~1)^5&bq=titulo:(%22divorcio%22~1)^5&bq=textolibreprincipal_es:(%22divorcio%22~1)&bq=titulo:(%22juicio+de+divorcio%22~1)^5&bq=textolibreprincipal_es:(%22juicio+de+divorcio%22~1)&bq=idiomas:1^1000&facet.field=themine_global_tesauro&facet.field=themine_global_doc-semanticas_tes&facet.field=themine_global_tipo-de-formulario_mb&facet=true&sort=score+desc&sem0_0p=payload(themine_global_premium-doc-semanticas_tes,%22divorcio%22)&sem0_1p=payload(themine_global_premium-doc-semanticas_tes,%22juicio-de-divorcio%22)&q_firsttoken_single_2=titulofirsttoken:(%22FIRSTTOKEN+divorcio%22~2)&q_firsttoken_single_1=titulofirsttoken:(%22FIRSTTOKEN+divorcio%22~1)&m_firsttoken_single_2=if(gt(query($q_firsttoken_single_2),0),125,0)&m_firsttoken_single_1=if(gt(query($q_firsttoken_single_1),0),250,0)&t_divorcio_contencioso=payload(themine_global_all-doc-terminos_tes,divorcio-contencioso)&term0=payload(themine_global_all-doc-terminos_tes,%22divorcio%22)&sem0_1=payload(themine_global_all-doc-semanticas_tes,%22juicio-de-divorcio%22)&sem0_0=payload(themine_global_all-doc-semanticas_tes,%22divorcio%22)&hl=true&hl.fl=texttohighlight_es&hl.q=divorcio&hl.fragsize=500&hl.snippets=3&hl.simple.pre=%3Cspan+class%3D%22highlight_token%22%3E&hl.simple.post=%3C/span%3ESOLR_QUERY_TIME:(t1-t0)=169,%20QTime=45
-					</textarea>
+					<textarea name="url2" id="url2" cols="30" rows="10"></textarea>
 				</div>
 			</div>
 			<div id="html" class="result"></div>
@@ -32,22 +29,30 @@
 			document.getElementById('submit').addEventListener('click', submit)
 			function readInput(id){
 				let url = document.getElementById(id).value
-				url = url.split('?')[1]
-				return Object.fromEntries(new URLSearchParams(url))
+				if(url){
+					url = url.split('?')[1]
+					return Object.fromEntries(new URLSearchParams(url))
+				}else{
+					return null
+				}
 			}
 			function submit(){
 				let obj_url1 = readInput('url1')
 				let obj_url2 = readInput('url2')
-				createHtmlcompare(obj_url1, obj_url2)
+				if (obj_url2){
+					createHtmlcompare(obj_url1, obj_url2)
+				}else{
+					createHtml(obj_url1)
+				}
 			}
 
 			function createHtml(obj_url){
 				let html=""
 				for (var key in obj_url){
-					item=`<div><span>${key}<span>: <span>${obj_url[key]}<span></div>`
+					item=`<div class="column"><span>${key}<span>: <span>${obj_url[key]}<span></div>`
 				html+=item
 				}
-				document.getElementById('message').innerHTML = html
+				document.getElementById('html').innerHTML = html
 			}
 			function createHtmlcompare(obj_url1,obj_url2){
 				let html=""
@@ -60,7 +65,6 @@
 				for (const key of all_keys){
 					let item1=`<div class="column"></div>`
 					let item2=`<div class="column"></div>`
-					console.log(`<div>${key}:${obj_url2[key]}</div>`)
 					if (obj_url1[key] && obj_url2[key]){
 						({res1,res2} = compareValues(obj_url1[key],obj_url2[key]))
 						item1=`<div class="column"><span>${key}<span>: ${res1}</div>`
