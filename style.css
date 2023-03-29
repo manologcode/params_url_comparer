@@ -50,6 +50,21 @@ textarea{
 	box-sizing: border-box;
 }
 
+.btn-clean{
+	float: right;
+    background: white;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.arr{
+	border: solid 1px;
+	margin: 0 2px;
+}
+
 .row {
 	display: flex;
   }
@@ -58,7 +73,7 @@ textarea{
 	word-break: break-all;
 	flex: 50%;
 	margin: 2px;
-	min height: 16px;
+	min-height: 16px;
     background-color: #c4c4c4;
     padding: 3px 10px;
   }

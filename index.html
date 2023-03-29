@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparar params Urls</title>
-	<link rel= "stylesheet" type= "text/css" href= "style.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Comparar params Urls</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 	<div class="content">
 		<h2>Comparar params Urls</h2>
@@ -15,85 +17,130 @@
 			<div class="row">
 				<div class="column">
 					<label for="">URL1:</label>
-					<textarea name="url1" id="url1" cols="30" rows="10" required></textarea>
+					<div id="clean1" class="btn-clean">🗑️</div>
+					<textarea name="url1" id="url1" cols="30" rows="10" required>
+					</textarea>
 					<div id="html1" class="result"></div>
 				</div>
 				<div class="column">
-					<label for="">URL2:</label>
-					<textarea name="url2" id="url2" cols="30" rows="10"></textarea>
+					<div id="clean2" class="btn-clean">🗑️</div>	
+					<label for="">URL2:
+					</label>
+					<textarea name="url2" id="url2" cols="30" rows="10">
+					</textarea>
 				</div>
 			</div>
 			<div id="html" class="result"></div>
 		</div>
 		<script>
 			document.getElementById('submit').addEventListener('click', submit)
-			function readInput(id){
+			document.getElementById('clean1').addEventListener('click', ()=> document.getElementById('url1').value="")
+			document.getElementById('clean2').addEventListener('click', ()=> document.getElementById('url2').value="")
+			function readInput(id) {
 				let url = document.getElementById(id).value
-				if(url){
-					url = url.split('?')[1]
-					return Object.fromEntries(new URLSearchParams(url))
-				}else{
+				if (url) {
+					url_query = url.split('?')[1]
+					data =groupParamsByKey(new URLSearchParams(url_query))
+					data[' url']=url.split('?')[0]
+					return data
+				} else {
 					return null
 				}
 			}
-			function submit(){
+
+			function groupParamsByKey(params) {
+				return [...params.entries()].reduce((acc, tuple) => {
+					const [key, val] = tuple;
+					if (acc.hasOwnProperty(key)) {
+						if (Array.isArray(acc[key])) {
+							acc[key] = [...acc[key], val]
+						} else {
+							acc[key] = [acc[key], val];
+						}
+					} else {
+						acc[key] = val;
+					}
+					return acc;
+				}, {});
+			}
+
+
+			function submit() {
 				let obj_url1 = readInput('url1')
 				let obj_url2 = readInput('url2')
-				if (obj_url2){
+				if (obj_url2) {
 					createHtmlcompare(obj_url1, obj_url2)
-				}else{
+				} else {
 					createHtml(obj_url1)
 				}
 			}
 
-			function createHtml(obj_url){
-				let html=""
-				for (var key in obj_url){
-					item=`<div class="column"><span>${key}<span>: <span>${obj_url[key]}<span></div>`
-				html+=item
+			function createHtml(obj_url) {
+				let html = ""
+				for (var key in obj_url) {
+					item = `<div class="column"><span>${key}<span>: <span>${obj_url[key]}<span></div>`
+					html += item
 				}
 				document.getElementById('html').innerHTML = html
 			}
-			function createHtmlcompare(obj_url1,obj_url2){
-				let html=""
-
-				all_keys = Object.keys(obj_url1).concat(Object.keys(obj_url2))
-				console.log(all_keys)
-				let unic_keys = [...new Set(all_keys)]
-				all_keys=unic_keys.sort() 
-				console.log(all_keys)
-				for (const key of all_keys){
-					let item1=`<div class="column"></div>`
-					let item2=`<div class="column"></div>`
-					if (obj_url1[key] && obj_url2[key]){
-						({res1,res2} = compareValues(obj_url1[key],obj_url2[key]))
-						item1=`<div class="column"><span>${key}<span>: ${res1}</div>`
-						item2=`<div class="column"><span>${key}<span>: ${res2}</div>`
-					}else{
-						if (obj_url1[key]){
-							item1=`<div class="column red"><span>${key}<span>: <span>${obj_url1[key]}<span></div>`
-						}else{
-							item2=`<div class="column red"><span>${key}<span>: <span>${obj_url2[key]}<span></div>`
+			function createHtmlcompare(obj_url1, obj_url2) {
+				let html = ""
+				all_keys = array_unique(Object.keys(obj_url1), Object.keys(obj_url2))
+				for (const key of all_keys) {
+					let item1 = `<div class="column"></div>`
+					let item2 = `<div class="column"></div>`
+					if (obj_url1[key] && obj_url2[key]) {
+						if (Array.isArray(obj_url1[key])) {
+							all_data = array_unique(obj_url1[key], obj_url2[key])
+							res1 = ``
+							res2 = ``
+							for (k of all_data) {
+								ok1 = obj_url1[key].includes(k)
+								ok2 = obj_url2[key].includes(k)
+								if (ok1 && ok2){
+									res1 += `<span class="arr">${k}</span>`
+									res2 += `<span class="arr">${k}</span>`
+								}else{
+									res1 += ok1 ? `<span class="red arr">${k}</span>` : `<span></span>`
+									res2 += ok2 ? `<span class="red arr">${k}</span>` : `<span></span>`
+								}
+							}
+						} else {
+							({ res1, res2 } = compareValues(obj_url1[key], obj_url2[key]))
+						}
+						item1 = `<div class="column"><span>${key}</span>: ${res1}</div>`
+						item2 = `<div class="column"><span>${key}</span>: ${res2}</div>`
+					} else {
+						if (obj_url1[key]) {
+							item1 = `<div class="column red"><span>${key}</span>: <span>${obj_url1[key]}</span></div>`
+						} else {
+							item2 = `<div class="column red"><span>${key}</span>: <span>${obj_url2[key]}</span></div>`
 						}
 					}
-				html+=`<div class="row">${item1}${item2}</div>`	
-				}	
+					html += `<div class="row">${item1}${item2}</div>`
+				}
 				document.getElementById('html').innerHTML = html
 
 			}
-			function compareValues(val1,val2){
+			function array_unique(obj1, obj2) {
+				allobj = obj1.concat(obj2)
+				let unic_keys = [...new Set(allobj)]
+				return unic_keys.sort()
+			}
+			function compareValues(val1, val2) {
 				response = {
-					res1: `<span>${val1}<span>`,
-					res2: `<span>${val2}<span>`
+					res1: `<span>${val1}</span>`,
+					res2: `<span>${val2}</span>`
 				}
-				if (val1!=val2)
-				response = {
-					res1: `<span class="red">${val1}<span>`,
-					res2: `<span class="red">${val2}<span>`
-				}
+				if (val1 != val2)
+					response = {
+						res1: `<span class="red">${val1}</span>`,
+						res2: `<span class="red">${val2}</span>`
+					}
 				return response
 			}
 		</script>
 	</div>
 </body>
+
 </html>
