@@ -19,7 +19,6 @@
 					<label for="">URL1:</label>
 					<div id="clean1" class="btn-clean">🗑️</div>
 					<textarea name="url1" id="url1" cols="30" rows="10" required>
-						http://solrproxy.tirant.net:300/frontend4/bcdef/formularioPayload?q=%2Brecurso+%2Bde+%2Breposicion&start=0&rows=10&fl=id,fechaalerta,hasasignaciones,score,materias,fuenovedad&bf=min(product(${term0},10),500)&bf=min(product(${sem0_0},5),200)&bf=min(product(${sem0_1},5),200)&bf=min(product(${sem0_2},5),200)&bf=min(product(${sem0_3},5),200)&bf=min(product(${term1},10),500)&bf=min(product(${sem1_1},5),200)&bf=product(${m_firsttokenfull},1)&bf=product(7,sqrt(field(themine_global_me-citan_hits)))&bf=product(${m_firsttoken_1},1)&bf=product(${m_firsttoken_2},1)&bf=map(ms(NOW/MONTH,fechaalerta),-999999,31536000000,50,0)&bf=map(ms(NOW/MONTH,fechaalerta),31536000001,94608000000,30,0)&bf=map(ms(NOW/MONTH,fechaalerta),94608000001,189216000000,1,0)&bf=map(ms(NOW/MONTH,fechaalerta),189216000001,9223372036854775807,-50,0)&bq=titulo:(%22recurso+reposicion%22~1)^20&bq=titulo:(%22recurso+reposicion%22~2)^10&bq=textolibreprincipal_es:(%22recurso+reposicion%22~1)^5&bq=titulo:(%22recurso+de+reposici%C3%B3n%22~1)^5&bq=textolibreprincipal_es:(%22recurso+de+reposici%C3%B3n%22~1)&bq=titulo:(%22recurso+reposici%C3%B3n%22~1)^5&bq=textolibreprincipal_es:(%22recurso+reposici%C3%B3n%22~1)&bq=titulo:(%22recursos%22~1)^5&bq=textolibreprincipal_es:(%22recursos%22~1)&bq=titulo:(%22recurso+reposici%C3%B3n%22~1)^5&bq=textolibreprincipal_es:(%22recurso+reposici%C3%B3n%22~1)&bq=titulo:(%22recurso%22~1)^5&bq=textolibreprincipal_es:(%22recurso%22~1)&bq=titulo:(%22recurso+reposicion%22~10)^10&bq=titulo:(reposicion)^100&bq=idiomas:1^1000&bq=idiomas:1^1000&facet.field=themine_global_tesauro&facet.field=themine_global_doc-semanticas_tes&facet.field=themine_global_tipo-de-formulario_mb&facet=true&sort=score+desc&term1=payload(themine_global_all-doc-terminos_tes,%22recurso-de-reposicion%22)&term0=payload(themine_global_all-doc-terminos_tes,%22recurso-reposicion%22)&m_firsttokenfull=if(gt(query($q_firsttokenfull),0),250,0)&sem0_3=payload(themine_global_all-doc-semanticas_tes,%22recurso-reposici%C3%B3n%22)&q_firsttoken_1=titulofirsttoken:(%22FIRSTTOKEN+recurso%22~1)&sem0_2=payload(themine_global_all-doc-semanticas_tes,%22recursos%22)&q_firsttokenfull=titulofirsttoken:(%22FIRSTTOKEN+recurso+reposicion%22~5)&q_firsttoken_2=titulofirsttoken:(%22FIRSTTOKEN+recurso%22~2)&sem1_1=payload(themine_global_all-doc-semanticas_tes,%22recurso%22)&m_firsttoken_1=if(gt(query($q_firsttoken_1),0),250,0)&sem0_1=payload(themine_global_all-doc-semanticas_tes,%22recurso-reposici%C3%B3n%22)&m_firsttoken_2=if(gt(query($q_firsttoken_2),0),125,0)&sem0_0=payload(themine_global_all-doc-semanticas_tes,%22recurso-de-reposici%C3%B3n%22)&shards={}&shards.tolerant=true
 					</textarea>
 					<div id="html1" class="result"></div>
 				</div>
@@ -28,154 +27,12 @@
 					<label for="">URL2:
 					</label>
 					<textarea name="url2" id="url2" cols="30" rows="10">
-						http://solrproxy.tirant.net:300/frontend4/bcdef/formularioPayload?q=%2Brecurso+%2Bde+%2Breposicion&start=0&rows=10&fl=id,fechaalerta,hasasignaciones,score,materias,fuenovedad&bq=titulo%3A(%22recurso+reposicion%22~1)^20&bq=titulo%3A(%22recurso+reposicion%22~2)^10&bq=textolibreprincipal_es%3A(%22recurso+reposicion%22~1)^5&bq=titulo%3A(%22recurso+de+reposici%C3%B3n%22~1)^5&bq=textolibreprincipal_es%3A(%22recurso+de+reposici%C3%B3n%22~1)&bq=titulo%3A(%22recurso+reposici%C3%B3n%22~1)^5&bq=textolibreprincipal_es%3A(%22recurso+reposici%C3%B3n%22~1)&bq=titulo%3A(%22recursos%22~1)^5&bq=textolibreprincipal_es%3A(%22recursos%22~1)&bq=titulo%3A(%22recurso%22~1)^5&bq=textolibreprincipal_es%3A(%22recurso%22~1)&bq=titulo%3A(%22recurso+reposicion%22~10)^10&bq=titulo%3A(reposicion)^100&bq=idiomas%3A1^1000&bf=min(product(%24{term0}%2C10)%2C500)&bf=min(product(%24{sem0_0}%2C5)%2C200)&bf=min(product(%24{sem0_1}%2C5)%2C200)&bf=min(product(%24{sem0_2}%2C5)%2C200)&bf=min(product(%24{sem0_3}%2C5)%2C200)&bf=min(product(%24{term1}%2C10)%2C500)&bf=min(product(%24{sem1_1}%2C5)%2C200)&bf=product(%24{m_firsttokenfull}%2C1)&bf=product(7%2Csqrt(field(themine_global_me-citan_hits)))&bf=product(%24{m_firsttoken_1}%2C1)&bf=product(%24{m_firsttoken_2}%2C1)&bf=map(ms(NOW%2FMONTH%2Cfechaalerta)%2C-999999%2C31536000000%2C50%2C0)&bf=map(ms(NOW%2FMONTH%2Cfechaalerta)%2C31536000001%2C94608000000%2C30%2C0)&bf=map(ms(NOW%2FMONTH%2Cfechaalerta)%2C94608000001%2C189216000000%2C1%2C0)&bf=map(ms(NOW%2FMONTH%2Cfechaalerta)%2C189216000001%2C9223372036854775807%2C-50%2C0)&&sort=score+desc&term0=payload(themine_global_all-doc-terminos_tes%2C%22recurso-reposicion%22)&sem0_0=payload(themine_global_all-doc-semanticas_tes%2C%22recurso-de-reposici%C3%B3n%22)&sem0_1=payload(themine_global_all-doc-semanticas_tes%2C%22recurso-reposici%C3%B3n%22)&sem0_2=payload(themine_global_all-doc-semanticas_tes%2C%22recursos%22)&sem0_3=payload(themine_global_all-doc-semanticas_tes%2C%22recurso-reposici%C3%B3n%22)&term1=payload(themine_global_all-doc-terminos_tes%2C%22recurso-de-reposicion%22)&sem1_1=payload(themine_global_all-doc-semanticas_tes%2C%22recurso%22)&q_firsttokenfull=titulofirsttoken%3A(%22FIRSTTOKEN+recurso+reposicion%22~5)&m_firsttokenfull=if(gt(query(%24q_firsttokenfull)%2C0)%2C250%2C0)&q_firsttoken_1=titulofirsttoken%3A(%22FIRSTTOKEN+recurso%22~1)&m_firsttoken_1=if(gt(query(%24q_firsttoken_1)%2C0)%2C250%2C0)&q_firsttoken_2=titulofirsttoken%3A(%22FIRSTTOKEN+recurso%22~2)&m_firsttoken_2=if(gt(query(%24q_firsttoken_2)%2C0)%2C125%2C0)&shards={}&shards.tolerant=true&facet.field=themine_global_tesauro&facet.field=themine_global_doc-semanticas_tes&facet.field=themine_global_tipo-de-formulario_mb&facet=true
 					</textarea>
 				</div>
 			</div>
 			<div id="html" class="result"></div>
 		</div>
-		<script>
-			document.getElementById('submit').addEventListener('click', submit)
-			document.getElementById('clean1').addEventListener('click', ()=> document.getElementById('url1').value="")
-			document.getElementById('clean2').addEventListener('click', ()=> document.getElementById('url2').value="")
-			function readInput(id) {
-				let url = document.getElementById(id).value
-				if (url) {
-					url_query = url.split('?')[1]
-					const urlParams = new URLSearchParams(url_query);
-					const data = paramsToObject(urlParams.entries())
-					return data
-				} else {
-					return null
-				}
-			}
-
-			function paramsToObject(entries) {
-				const result = {}
-				for(const [key, value] of entries) {
-					if (Array.isArray(result[key])){
-						result[key].push(value)
-					}else{
-						if (key in result){
-							result[key] = [result[key]]
-							result[key].push(value)
-						}else{
-							result[key] = value;
-						}
-					}
-				}
-				return result;
-			}
-
-			function submit() {
-				let obj_url1 = readInput('url1')
-				let obj_url2 = readInput('url2')
-				if (obj_url2) {
-					createHtmlcompare(obj_url1, obj_url2)
-				} else {
-					createHtml(obj_url1)
-				}
-			}
-
-			function createHtml(obj_url) {
-				let html = ""
-				for (var key in obj_url) {
-					item = `<div class="column"><span>${key}<span>: <span>${obj_url[key]}<span></div>`
-					html += item
-				}
-				document.getElementById('html').innerHTML = html
-			}
-
-			function createHtmlcompare(obj_url1, obj_url2) {
-				let html = ""
-				all_keys = array_unique(Object.keys(obj_url1), Object.keys(obj_url2))
-				for (const key of all_keys) {
-					let item1 = `<div class="column"></div>`
-					let item2 = `<div class="column"></div>`
-					if (obj_url1[key] && obj_url2[key]) {
-						if (Array.isArray(obj_url1[key])) {
-							let data_compared = compore_arrays(obj_url1[key], obj_url2[key])
-							res = draw_array_html(data_compared)
-						} else {
-							res = compareValues(obj_url1[key], obj_url2[key])
-						}
-						item1 = `<div class="column"><span>${key}</span>: ${res[0]}</div>`
-						item2 = `<div class="column"><span>${key}</span>: ${res[1]}</div>`
-					} else {
-						if (obj_url1[key]) {
-							item1 = `<div class="column red"><span>${key}</span>: <span>${obj_url1[key]}</span></div>`
-						} else {
-							item2 = `<div class="column red"><span>${key}</span>: <span>${obj_url2[key]}</span></div>`
-						}
-					}
-					html += `<div class="row">${item1}${item2}</div>`
-				}
-				document.getElementById('html').innerHTML = html
-			}
-			function draw_array_html(data){
-				all_data = array_unique(Object.keys(data[0]), Object.keys(data[1]))
-				resp=["",""]
-				all_data.forEach(item => {
-					item0="" ; item1 =""
-					ok0 = Object.keys(data[0]).includes(item)
-					ok1 = Object.keys(data[1]).includes(item)
-					if (ok1 && ok1){
-						item0 = `<span class="arr">${item}</span>`
-						item1 = `<span class="arr">${item}</span>`
-					}else{
-						item0 = ok0 ? `<span class="red arr">${item}</span>` : `<span></span>`
-						item1 = ok1 ? `<span class="red arr">${item}</span>` : `<span></span>`
-					}
-					if (data[0][item] > 1){
-						item0 = draw_array_multiple(data[0][item], item) 
-					}
-					if (data[1][item] > 1){
-						item1 = draw_array_multiple(data[1][item], item) 
-					}
-					resp[0] += item0
-					resp[1] += item1
-				})
-				return resp
-			}
-			function draw_array_multiple(num, item){
-				response=""
-					for(let i=1; i<=num ; i++ ){
-						response += `<span class="red arr">${item}</span>`
-					}
-				return response
-			}
-			function compore_arrays(arr0,arr1){
-				all_data = array_unique(arr0, arr1)
-				rep = [{},{}]
-				all_data.forEach(item => {
-					rep[0][item] = getOccurrence(arr0, item)
-					rep[1][item] = getOccurrence(arr1, item)
-				});
-				return rep
-			}
-			function getOccurrence(array, value) {
-				return array.filter((v) => (v === value)).length;
-			}
-
-			function removeItemOnce(arr, value) {
-			var index = arr.indexOf(value);
-			if (index > -1) {
-				arr.splice(index, 1);
-			}
-			return arr;
-			}			
-			function array_unique(obj0, obj1) {
-				allobj = obj0.concat(obj1)
-				let unic_keys = [...new Set(allobj)]
-				return unic_keys.sort()
-			}
-			function compareValues(val0, val1) {
-				response = [`<span>${val0}</span>`,`<span>${val1}</span>`]
-				if (val0 != val1 && val0!='true')
-					response = [`<span class="red">${val0}</span>`,`<span class="red">${val1}</span>`]
-				return response
-			}
-		</script>
+		<script src="./code.js"></script>
 	</div>
 </body>
 
