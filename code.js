@@ -1,6 +1,18 @@
 document.getElementById('submit').addEventListener('click', submit)
 document.getElementById('clean1').addEventListener('click', ()=> document.getElementById('url1').value="")
 document.getElementById('clean2').addEventListener('click', ()=> document.getElementById('url2').value="")
+Array.prototype.count = function(obj){
+	var count = this.length;
+	if(typeof(obj) !== "undefined"){
+	  var array = this.slice(0), count = 0; // clone array and reset count
+	  for(i = 0; i < array.length; i++){
+		if(array[i] == obj){ count++ }
+	  }
+	}
+	return count;
+  }
+
+
 function readInput(id) {
 	let url = document.getElementById(id).value
 	if (url) {
@@ -58,6 +70,14 @@ function createHtmlcompare(obj_url1, obj_url2) {
 		if (obj_url1[key] && obj_url2[key]) {
 			if (Array.isArray(obj_url1[key])) {
 				let data_compared = compore_arrays(obj_url1[key], obj_url2[key])
+
+				console.log(obj_url1[key])
+				console.log(obj_url2[key])
+				
+				console.log(".............................")
+				console.log(data_compared)
+				console.log(".............................")
+
 				res = draw_array_html(data_compared)
 			} else {
 				res = compareValues(obj_url1[key], obj_url2[key])
@@ -77,12 +97,14 @@ function createHtmlcompare(obj_url1, obj_url2) {
 }
 function draw_array_html(data){
 	all_data = array_unique(Object.keys(data[0]), Object.keys(data[1]))
+
 	resp=["",""]
 	all_data.forEach(item => {
 		item0="" ; item1 =""
-		ok0 = Object.keys(data[0]).includes(item)
-		ok1 = Object.keys(data[1]).includes(item)
-		if (ok1 && ok1){
+		ok0 = data[0][item] == 1
+		ok1 = data[1][item] == 1
+		console.log(`----${item}---${ok0} - ${ok1}`)
+		if (ok0 && ok1){
 			item0 = `<span class="arr">${item}</span>`
 			item1 = `<span class="arr">${item}</span>`
 		}else{
@@ -111,13 +133,10 @@ function compore_arrays(arr0,arr1){
 	all_data = array_unique(arr0, arr1)
 	rep = [{},{}]
 	all_data.forEach(item => {
-		rep[0][item] = getOccurrence(arr0, item)
-		rep[1][item] = getOccurrence(arr1, item)
+		rep[0][item] = arr0.count(item)
+		rep[1][item] = arr1.count(item)
 	});
 	return rep
-}
-function getOccurrence(array, value) {
-	return array.filter((v) => (v === value)).length;
 }
 
 function removeItemOnce(arr, value) {
