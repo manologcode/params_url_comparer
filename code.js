@@ -1,6 +1,7 @@
 document.getElementById('submit').addEventListener('click', submit)
 document.getElementById('clean1').addEventListener('click', ()=> document.getElementById('url1').value="")
 document.getElementById('clean2').addEventListener('click', ()=> document.getElementById('url2').value="")
+
 Array.prototype.count = function(obj){
 	var count = this.length;
 	if(typeof(obj) !== "undefined"){
@@ -11,7 +12,6 @@ Array.prototype.count = function(obj){
 	}
 	return count;
   }
-
 
 function readInput(id) {
 	let url = document.getElementById(id).value
@@ -45,11 +45,10 @@ function paramsToObject(entries) {
 function submit() {
 	let obj_url1 = readInput('url1')
 	let obj_url2 = readInput('url2')
-	if (obj_url2) {
-		createHtmlcompare(obj_url1, obj_url2)
-	} else {
+	if (obj_url2)
+		createHtmlCompare(obj_url1, obj_url2)
+	else
 		createHtml(obj_url1)
-	}
 }
 
 function createHtml(obj_url) {
@@ -61,24 +60,16 @@ function createHtml(obj_url) {
 	document.getElementById('html').innerHTML = html
 }
 
-function createHtmlcompare(obj_url1, obj_url2) {
+function createHtmlCompare(obj_url1, obj_url2) {
 	let html = ""
-	all_keys = array_unique(Object.keys(obj_url1), Object.keys(obj_url2))
+	all_keys = arrayUnique(Object.keys(obj_url1), Object.keys(obj_url2))
 	for (const key of all_keys) {
 		let item1 = `<div class="column"></div>`
 		let item2 = `<div class="column"></div>`
 		if (obj_url1[key] && obj_url2[key]) {
 			if (Array.isArray(obj_url1[key])) {
-				let data_compared = compore_arrays(obj_url1[key], obj_url2[key])
-
-				console.log(obj_url1[key])
-				console.log(obj_url2[key])
-				
-				console.log(".............................")
-				console.log(data_compared)
-				console.log(".............................")
-
-				res = draw_array_html(data_compared)
+				let data_compared = comparer_arrays(obj_url1[key], obj_url2[key])
+				res = drawArrayHtml(data_compared)
 			} else {
 				res = compareValues(obj_url1[key], obj_url2[key])
 			}
@@ -95,15 +86,15 @@ function createHtmlcompare(obj_url1, obj_url2) {
 	}
 	document.getElementById('html').innerHTML = html
 }
-function draw_array_html(data){
-	all_data = array_unique(Object.keys(data[0]), Object.keys(data[1]))
+
+function drawArrayHtml(data){
+	all_data = arrayUnique(Object.keys(data[0]), Object.keys(data[1]))
 
 	resp=["",""]
 	all_data.forEach(item => {
 		item0="" ; item1 =""
 		ok0 = data[0][item] == 1
 		ok1 = data[1][item] == 1
-		console.log(`----${item}---${ok0} - ${ok1}`)
 		if (ok0 && ok1){
 			item0 = `<span class="arr">${item}</span>`
 			item1 = `<span class="arr">${item}</span>`
@@ -111,26 +102,25 @@ function draw_array_html(data){
 			item0 = ok0 ? `<span class="red arr">${item}</span>` : `<span></span>`
 			item1 = ok1 ? `<span class="red arr">${item}</span>` : `<span></span>`
 		}
-		if (data[0][item] > 1){
+		if (data[0][item] > 1)
 			item0 = draw_array_multiple(data[0][item], item) 
-		}
-		if (data[1][item] > 1){
+		if (data[1][item] > 1)
 			item1 = draw_array_multiple(data[1][item], item) 
-		}
 		resp[0] += item0
 		resp[1] += item1
 	})
 	return resp
 }
+
 function draw_array_multiple(num, item){
 	response=""
-		for(let i=1; i<=num ; i++ ){
+		for(let i=1; i<=num ; i++ )
 			response += `<span class="red arr">${item}</span>`
-		}
 	return response
 }
-function compore_arrays(arr0,arr1){
-	all_data = array_unique(arr0, arr1)
+
+function comparer_arrays(arr0,arr1){
+	all_data = arrayUnique(arr0, arr1)
 	rep = [{},{}]
 	all_data.forEach(item => {
 		rep[0][item] = arr0.count(item)
@@ -140,13 +130,12 @@ function compore_arrays(arr0,arr1){
 }
 
 function removeItemOnce(arr, value) {
-var index = arr.indexOf(value);
-if (index > -1) {
-	arr.splice(index, 1);
+	var index = arr.indexOf(value);
+	if (index > -1) {arr.splice(index, 1)}
+	return arr
 }
-return arr;
-}
-function array_unique(obj0, obj1) {
+
+function arrayUnique(obj0, obj1) {
 	allobj = obj0.concat(obj1)
 	let unic_keys = [...new Set(allobj)]
 	return unic_keys.sort()
