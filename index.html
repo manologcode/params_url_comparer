@@ -40,30 +40,30 @@
 				let url = document.getElementById(id).value
 				if (url) {
 					url_query = url.split('?')[1]
-					data =groupParamsByKey(new URLSearchParams(url_query))
-					data[' url']=url.split('?')[0]
+					const urlParams = new URLSearchParams(url_query);
+					const data = paramsToObject(urlParams.entries())
 					return data
 				} else {
 					return null
 				}
 			}
 
-			function groupParamsByKey(params) {
-				return [...params.entries()].reduce((acc, tuple) => {
-					const [key, val] = tuple;
-					if (acc.hasOwnProperty(key)) {
-						if (Array.isArray(acc[key])) {
-							acc[key] = [...acc[key], val]
-						} else {
-							acc[key] = [acc[key], val];
+			function paramsToObject(entries) {
+				const result = {}
+				for(const [key, value] of entries) {
+					if (Array.isArray(result[key])){
+						result[key].push(value)
+					}else{
+						if (key in result){
+							result[key] = [result[key]]
+							result[key].push(value)
+						}else{
+							result[key] = value;
 						}
-					} else {
-						acc[key] = val;
 					}
-					return acc;
-				}, {});
+				}
+				return result;
 			}
-
 
 			function submit() {
 				let obj_url1 = readInput('url1')
@@ -83,9 +83,11 @@
 				}
 				document.getElementById('html').innerHTML = html
 			}
+
 			function createHtmlcompare(obj_url1, obj_url2) {
 				let html = ""
 				all_keys = array_unique(Object.keys(obj_url1), Object.keys(obj_url2))
+
 				for (const key of all_keys) {
 					let item1 = `<div class="column"></div>`
 					let item2 = `<div class="column"></div>`
@@ -94,6 +96,8 @@
 							all_data = array_unique(obj_url1[key], obj_url2[key])
 							res1 = ``
 							res2 = ``
+							obj1_ini=obj_url1[key]
+							obj2_ini=obj_url2[key]
 							for (k of all_data) {
 								ok1 = obj_url1[key].includes(k)
 								ok2 = obj_url2[key].includes(k)
@@ -104,6 +108,14 @@
 									res1 += ok1 ? `<span class="red arr">${k}</span>` : `<span></span>`
 									res2 += ok2 ? `<span class="red arr">${k}</span>` : `<span></span>`
 								}
+								removeItemOnce(obj1_ini, k)
+								removeItemOnce(obj2_ini, k)
+							}
+							if (obj1_ini.length >0){
+								for (o of obj1_ini){res1 += `<span class="red arr">${o}</span>`	}
+							}
+							if (obj2_ini.length >0){
+								for (o of obj2_ini){res2 += `<span class="red arr">${o}</span>`	}
 							}
 						} else {
 							({ res1, res2 } = compareValues(obj_url1[key], obj_url2[key]))
@@ -117,11 +129,19 @@
 							item2 = `<div class="column red"><span>${key}</span>: <span>${obj_url2[key]}</span></div>`
 						}
 					}
+					
 					html += `<div class="row">${item1}${item2}</div>`
 				}
+				
 				document.getElementById('html').innerHTML = html
-
 			}
+			function removeItemOnce(arr, value) {
+			var index = arr.indexOf(value);
+			if (index > -1) {
+				arr.splice(index, 1);
+			}
+			return arr;
+			}			
 			function array_unique(obj1, obj2) {
 				allobj = obj1.concat(obj2)
 				let unic_keys = [...new Set(allobj)]
@@ -132,7 +152,7 @@
 					res1: `<span>${val1}</span>`,
 					res2: `<span>${val2}</span>`
 				}
-				if (val1 != val2)
+				if (val1 != val2 && val1!='true')
 					response = {
 						res1: `<span class="red">${val1}</span>`,
 						res2: `<span class="red">${val2}</span>`
