@@ -12,25 +12,24 @@
 	<div class="content">
 		<h2>Comparar params Urls</h2>
 		<button type="button" id="submit">Comparar</button>
-		<div>
-			<div class="row">
-				<div class="column">
-					<label for="">URL1:</label>
-					<div id="clean1" class="btn-clean">🗑️</div>
-					<textarea name="url1" id="url1" cols="30" rows="10" required>
-					</textarea>
-					<div id="html1" class="result"></div>
-				</div>
-				<div class="column">
-					<div id="clean2" class="btn-clean">🗑️</div>	
-					<label for="">URL2:
-					</label>
-					<textarea name="url2" id="url2" cols="30" rows="10">
-					</textarea>
-				</div>
+		<div id="uri-decode"></div>
+		<div class="row">
+			<div class="column">
+				<div id="decode1" class="btn-icon f-left">🔏</div>
+				<label for="">URL1:</label>
+				<div id="clean1" class="btn-icon f-right">🗑️</div>
+				<textarea name="url1" id="url1" cols="30" rows="10" required></textarea>
+				<div id="html1" class="result"></div>
 			</div>
-			<div id="html" class="result"></div>
+			
+			<div class="column">
+				<div id="clean2" class="btn-icon f-right">🗑️</div>	
+				<label for="">URL2:
+				</label>
+				<textarea name="url2" id="url2" cols="30" rows="10"></textarea>
+			</div>
 		</div>
+		<div id="html" class="result"></div>
 		<script src="./code.js"></script>
 	</div>
 </body>

@@ -50,8 +50,10 @@ textarea{
 	box-sizing: border-box;
 }
 
-.btn-clean{
-	float: right;
+.btn-icon{
+	margin: 0 10px;
+	width: 25px;
+	height: 25px;
     background: white;
     color: blue;
     border: 1px solid blue;
@@ -60,6 +62,13 @@ textarea{
     cursor: pointer;
 }
 
+.f-right{
+	float: right;
+}
+
+.f-left{
+	float: left;
+}
 .arr{
 	border: solid 1px;
 	margin: 0 2px;
@@ -79,4 +88,9 @@ textarea{
   }
   .result{
 	font-size: 10px;
+  }
+
+  #uri-decode{
+	font-size: 12px;
+    padding: 10px;
   }

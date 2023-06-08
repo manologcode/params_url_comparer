@@ -1,6 +1,7 @@
 document.getElementById('submit').addEventListener('click', submit)
 document.getElementById('clean1').addEventListener('click', ()=> document.getElementById('url1').value="")
 document.getElementById('clean2').addEventListener('click', ()=> document.getElementById('url2').value="")
+document.getElementById('decode1').addEventListener('click', ()=> draw_decoding_uri(document.getElementById('url1').value))
 
 Array.prototype.count = function(obj){
 	var count = this.length;
@@ -68,7 +69,7 @@ function createHtmlCompare(obj_url1, obj_url2) {
 		let item2 = `<div class="column"></div>`
 		if (obj_url1[key] && obj_url2[key]) {
 			if (Array.isArray(obj_url1[key])) {
-				let data_compared = comparer_arrays(obj_url1[key], obj_url2[key])
+				let data_compared = number_of_time_in_arrays(obj_url1[key], obj_url2[key])
 				res = drawArrayHtml(data_compared)
 			} else {
 				res = compareValues(obj_url1[key], obj_url2[key])
@@ -119,7 +120,7 @@ function draw_array_multiple(num, item){
 	return response
 }
 
-function comparer_arrays(arr0,arr1){
+function number_of_time_in_arrays(arr0,arr1){
 	all_data = arrayUnique(arr0, arr1)
 	rep = [{},{}]
 	all_data.forEach(item => {
@@ -127,12 +128,6 @@ function comparer_arrays(arr0,arr1){
 		rep[1][item] = arr1.count(item)
 	});
 	return rep
-}
-
-function removeItemOnce(arr, value) {
-	var index = arr.indexOf(value);
-	if (index > -1) {arr.splice(index, 1)}
-	return arr
 }
 
 function arrayUnique(obj0, obj1) {
@@ -145,4 +140,8 @@ function compareValues(val0, val1) {
 	if (val0 != val1 && val0!='true')
 		response = [`<span class="red">${val0}</span>`,`<span class="red">${val1}</span>`]
 	return response
+}
+
+function draw_decoding_uri(uri){
+	document.getElementById('uri-decode').innerHTML = decodeURI(uri)
 }
