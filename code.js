@@ -143,5 +143,7 @@ function compareValues(val0, val1) {
 }
 
 function draw_decoding_uri(uri){
-	document.getElementById('uri-decode').innerHTML = decodeURI(uri)
+	value =decodeURI(uri)
+	value=value.replaceAll('%2C',',').replaceAll('%2F','/').replaceAll('%3A',':')
+	document.getElementById('uri-decode').innerHTML = value
 }
